@@ -17,7 +17,7 @@ public class CalculateCost {
         int price = 0;
         HashSet<String> features = new HashSet<>();
 
-        price += CarOStatus.getUsedPricesDB().getPlattformen().get(CarOStatus.getPlattform()).getPrice();
+        price += CarOStatus.getUsedPricesDB().getPlattformen().get(CarOStatus.getPlattform()).getPrice(); //Das alles nutzt noch getPlattformen anstatt getPlattform
 
         for (String pack : CarOStatus.getPackages()) {
             price += CarOStatus.getUsedPricesDB().getPakete().get(pack).getPrice();

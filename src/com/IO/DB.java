@@ -12,20 +12,44 @@ public class DB {
 
     }
 
-    private HashMap<String, Feature> Features = new HashMap<>();
-    private HashMap<String, Paket> Pakete = new HashMap<>();
-    private HashMap<String, Plattform> Plattformen = new HashMap<>();
+    private HashMap<String, Feature> features = new HashMap<>();
+    private HashMap<String, Paket> pakete = new HashMap<>();
+    private HashMap<String, Plattform> plattformen = new HashMap<>();
 
 
     public HashMap<String, Feature> getFeatures() {
-        return Features;
+        return features;
+    }
+
+    public Feature getFeature(String name){
+        if(features.containsKey(name)){
+            return features.get(name);
+        }else{
+            return null;
+        }
     }
 
     public HashMap<String, Paket> getPakete() {
-        return Pakete;
+        return pakete;
+    }
+
+    public Paket getPaket(String name){
+        if(pakete.containsKey(name)){
+            return pakete.get(name);
+        }else{
+            return null;
+        }
     }
 
     public HashMap<String, Plattform> getPlattformen(){
-            return Plattformen;
+            return plattformen;
+    }
+
+    public Plattform getPlattform(String name){
+        if(plattformen.containsKey(name)){
+            return plattformen.get(name);
+        }else{
+            return null;
+        }
     }
 }

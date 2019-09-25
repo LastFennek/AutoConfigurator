@@ -38,24 +38,5 @@ public class CalculateTime {
         return time;
     }
 
-    public int calcTime(CarOrderStatus CarOStatus, String pack){
-        int time = 0;
-        HashSet<String> features = new HashSet<>();
-
-        for (String COSP : CarOStatus.getPackages()) {
-            for (String s : CarOStatus.getUsedPricesDB().getPakete().get(COSP).getFeatures()) {
-                features.add(s);
-            }
-        }
-
-        for (String s : CarOStatus.getUsedPricesDB().getPakete().get(pack).getFeatures()) {
-            if(!features.contains(s)){
-                features.add(s);
-                time += CarOStatus.getUsedPricesDB().getFeatures().get(s).getTime();
-            }
-        }
-
-        return time;
-    }
 
 }

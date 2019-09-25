@@ -6,18 +6,23 @@ public class CarOrderStatus {
     private String plattform;
     private HashSet<String> packages = new HashSet<>();
     private DB usedPricesDB;
-    private CalculateCost calc = new CalculateCost();
+    private CalculateCost calcPrice = new CalculateCost();
+    private CalculateTime calcTime = new CalculateTime();
 
     public CarOrderStatus(DB DB){
         this.usedPricesDB = DB;
     }
 
     public int getPrice(){
-        return calc.calcPrice(this);
+        return calcPrice.calcPrice(this);
     }
 
     public int getNewPackagePrice(String pack){
-        return calc.calcPrice(this,pack);
+        return calcPrice.calcPrice(this, pack);
+    }
+
+    public int getTime(){
+        return calcTime.calcTime(this);
     }
 
     String getPlattform() {
