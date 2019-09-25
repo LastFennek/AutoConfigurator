@@ -4,7 +4,7 @@
 package com.GUI;
 
 import com.IO.DB;
-import com.logic.Car;
+import com.logic.CarOrderStatus;
 import com.logic.Plattform;
 
 import java.time.LocalDate;
@@ -18,7 +18,7 @@ public class Main {
     public static void main(String[] args) {//throws everyExeption{
         // write your code here
         DB DB = new DB();
-        Car car = new Car();
+        CarOrderStatus car = new CarOrderStatus();
         Scanner scan = new Scanner(System.in);
 
         int x = 0;

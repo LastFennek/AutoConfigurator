@@ -1,29 +1,29 @@
 package com.logic;
-
 import com.IO.DB;
-
 import java.util.HashSet;
 
-public class Car {
-    Plattform plattform;
-    HashSet<String> packages = new HashSet<>();
+public class CarOrderStatus {
+    private Plattform plattform;
+    private HashSet<Paket> packages = new HashSet<>();
+    private DB usedPricesDB;
 
+    CarOrderStatus(DB DB){
+        this.usedPricesDB = DB;
+    }
 
-    public int getPrice(DB DB){
-
+    public int getPrice(){
         int preis = 0;
-
-        preis += this.plattform.basePreis;
-
         HashSet<String> features = new HashSet<>();
-        for (String x : this.packages) {
-            preis += DB.getPakete().get(x).basePrice;
-            for (String s : DB.getPakete().get(x).features) {
+
+        preis += this.plattform.getPrice();
+        for (Paket x : this.packages) {
+            preis += x.getPrice();
+            for (String s : x.getFeatures()) {
                 if (features.contains(s)) {
                     continue;
                 } else {
                     features.add(s);
-                    preis += DB.getFeatures().get(s).Preis;
+                    preis += usedPricesDB.getFeatures().get(s).getPrice();
                 }
 
             }
@@ -31,7 +31,7 @@ public class Car {
         return preis;
     }
 
-    public int getPrice(DB DB , String Packet){
+    public int getPrice(String Packet){
 
         HashSet<String> features = new HashSet<>();
         for (String x : this.packages) {
@@ -59,7 +59,7 @@ public class Car {
         return preisPac;
     }
 
-    public int getDauer(DB DB){
+    public int getDauer(){
 
         int dauer = 0;
 

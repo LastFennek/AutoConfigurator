@@ -6,7 +6,6 @@ public class Paket extends CarProductionResource{
 
     private ArrayList<String> features = new ArrayList<>();
 
-
     public Paket(int price, int time, String name, ArrayList<String> features) {
         super(price,time,name);
         this.setFeatures(features);
@@ -16,7 +15,8 @@ public class Paket extends CarProductionResource{
         this.features = features;
     }
 
-
-
+    public String[] getFeatures(){
+        return features.toArray(String[]::new);
+    }
 
 }

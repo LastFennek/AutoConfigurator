@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Plattform extends CarProductionResource{
 
-    ArrayList<String> packages = new ArrayList<>();
+    private  ArrayList<String> packages = new ArrayList<>();
 
     public Plattform(int price, int time, String name, ArrayList<String> packages) {
         super(price,time,name);
@@ -15,6 +15,8 @@ public class Plattform extends CarProductionResource{
         this.packages = packages;
     }
 
-
+    public String[] getPackages(){
+        return packages.toArray(String[]::new);
+    }
 
 }

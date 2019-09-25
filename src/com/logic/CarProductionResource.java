@@ -6,8 +6,9 @@ public abstract class CarProductionResource {
     private String name = "not set";
 
     CarProductionResource(int price, int time, String name){
-        this.price = price;
-        this.time = time;
+        this.setPrice(price);
+        this.setTime(time);
+        this.setName(name);
     }
 
     private void setPrice(int price){
@@ -20,6 +21,10 @@ public abstract class CarProductionResource {
         if(time > 0 && time < 300){
             this.time = time;
         }
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getPrice(){
