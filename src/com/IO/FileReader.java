@@ -11,8 +11,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Filereader {
-    private void loadDB(DB DB, String file){
+public class FileReader {
+
+    void loadDB(DB DB, String file){
 
         try (BufferedReader br = Files.newBufferedReader(Paths.get(Translate.file_paths(file)))) {
             String line;

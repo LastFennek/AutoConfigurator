@@ -8,13 +8,14 @@ import java.util.HashMap;
 public class DB {
 
 
-    DB(){
-
-    }
-
     private HashMap<String, Feature> features = new HashMap<>();
     private HashMap<String, Paket> pakete = new HashMap<>();
     private HashMap<String, Plattform> plattformen = new HashMap<>();
+    private FileReader read = new FileReader();
+
+    public DB(){
+        read.loadDB(this,"PPF");
+    }
 
 
     public HashMap<String, Feature> getFeatures() {

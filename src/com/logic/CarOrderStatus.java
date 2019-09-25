@@ -25,12 +25,24 @@ public class CarOrderStatus {
         return calcTime.calcTime(this);
     }
 
-    String getPlattform() {
+    public String getPlattform() {
         return this.plattform;
     }
 
-    HashSet<String> getPackages() {
+    public void setPlattform(String plattform){
+        this.plattform = plattform;
+    }
+
+    public HashSet<String> getPackages() {
         return this.packages;
+    }
+
+    public void removePackage(String packet) {
+        this.packages.remove(packet);
+    }
+
+    public void addPackage(String packet){
+        this.packages.add(packet);
     }
 
     DB getUsedPricesDB() {
