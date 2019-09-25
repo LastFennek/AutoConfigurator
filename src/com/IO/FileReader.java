@@ -15,7 +15,7 @@ public class FileReader {
 
     void loadDB(DB DB, String file){
 
-        try (BufferedReader br = Files.newBufferedReader(Paths.get(Translate.file_paths(file)))) {
+        try (BufferedReader br = Files.newBufferedReader(Paths.get("C:\\OneDrive\\OneDrive - Bundeshandelsakademie und Bundeshandelsschule Imst\\23_POS_DOBL\\190922\\src\\com\\PPF.txt"))){//Translate.file_paths(file))))) {
             String line;
             int mode = 0;
             while ((line = br.readLine()) != null) {
@@ -52,13 +52,13 @@ public class FileReader {
         }else if(mode == 2){
 
             if(DB.getPakete().get(parts[2]) == null){
-                DB.getPakete().put(parts[2],new Paket(Integer.parseInt(parts[0]),Integer.parseInt(parts[1]),parts[2], new ArrayList<String>(Arrays.asList(Arrays.copyOfRange(parts,3,parts.length)))));
+                DB.getPakete().put(parts[2],new Paket(Integer.parseInt(parts[1]),Integer.parseInt(parts[0]),parts[2], new ArrayList<String>(Arrays.asList(Arrays.copyOfRange(parts,3,parts.length)))));
             }else{System.out.println("Dublikat in Pakete!");}
 
         }else if(mode == 3){
 
-            if(DB.getPlattform(parts[2])== null){
-                DB.getPlattformen().put(parts[2],new Plattform(Integer.parseInt(parts[0]),Integer.parseInt(parts[1]),parts[2], new ArrayList<String>(Arrays.asList(Arrays.copyOfRange(parts,3,parts.length)))));
+            if(DB.getPlattform(parts[2]) == null){
+                DB.getPlattformen().put(parts[2],new Plattform(Integer.parseInt(parts[1]),Integer.parseInt(parts[0]),parts[2], new ArrayList<String>(Arrays.asList(Arrays.copyOfRange(parts,3,parts.length)))));
             }else{System.out.println("Dublikat in Plattformen!");}
 
         }else{

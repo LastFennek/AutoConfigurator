@@ -42,9 +42,11 @@ public class CalculateCost {
         int price = 0;
         HashSet<String> features = new HashSet<>();
 
-        for (String COSP : CarOStatus.getPackages()) {
-            for (String s : CarOStatus.getUsedPricesDB().getPakete().get(COSP).getFeatures()) {
-                features.add(s);
+        if(CarOStatus.getPackages() != null){
+            for (String COSP : CarOStatus.getPackages()) {
+                for (String s : CarOStatus.getUsedPricesDB().getPaket(COSP).getFeatures()) {
+                    features.add(s);
+                }
             }
         }
 

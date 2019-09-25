@@ -43,7 +43,7 @@ public class Sequence {
 
                     int in = input.inputInt();
                     if (in != counter) {
-                        car.setPlattform(DB.getPlattform(mapNumberToPlattform.get(input)).getName());
+                        car.setPlattform(mapNumberToPlattform.get(in));
                     }
                     x = 1;
                     break;
@@ -79,10 +79,10 @@ public class Sequence {
                         x = -1;
                         break;
                     } else {
-                        if (car.getPackages().contains(mapNumberToPlattform.get(input))) {
-                            car.removePackage(mapNumberToPlattform.get(input));
+                        if (car.getPackages().contains(mapNumberToPlattform.get(in))) {
+                            car.removePackage(mapNumberToPlattform.get(in));
                         } else {
-                            car.addPackage(mapNumberToPlattform.get(input));
+                            car.addPackage(mapNumberToPlattform.get(in));
                         }
                     }
                     break;
