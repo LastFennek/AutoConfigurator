@@ -5,7 +5,7 @@ public abstract class CarProductionResource {
     private int time = 0;
     private String name = "not set";
 
-    CarProductionResource(int price, int time, String name){
+    public CarProductionResource(int price, int time, String name){
         this.setPrice(price);
         this.setTime(time);
         this.setName(name);

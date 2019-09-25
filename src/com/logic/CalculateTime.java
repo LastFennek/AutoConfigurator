@@ -3,7 +3,7 @@ package com.logic;
 import com.IO.DB;
 import java.util.HashSet;
 
-public class CalculateCost {
+public class CalculateTime {
 
     /**
      * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -13,33 +13,33 @@ public class CalculateCost {
      * @param CarOStatus
      * @return preis des CarOrderStatus
      */
-    public int calcPrice(CarOrderStatus CarOStatus){
-        int price = 0;
+    public int calcTime(CarOrderStatus CarOStatus){
+        int time = 0;
         HashSet<String> features = new HashSet<>();
 
-        price += CarOStatus.getUsedPricesDB().getPlattformen().get(CarOStatus.getPlattform()).getPrice();
+        time += CarOStatus.getUsedPricesDB().getPlattformen().get(CarOStatus.getPlattform()).getTime();
 
         for (String pack : CarOStatus.getPackages()) {
-            price += CarOStatus.getUsedPricesDB().getPakete().get(pack).getPrice();
-            price += this.calcPrice(CarOStatus.getUsedPricesDB().getPakete().get(pack), CarOStatus.getUsedPricesDB(), features);
+            time += CarOStatus.getUsedPricesDB().getPakete().get(pack).getTime();
+            time += this.calcTime(CarOStatus.getUsedPricesDB().getPakete().get(pack), CarOStatus.getUsedPricesDB(), features);
         }
-        return price;
+        return time;
     }
 
-    private int calcPrice(Paket paket, DB usedPrices, HashSet features){
-        int price = 0;
+    private int calcTime(Paket paket, DB usedPrices, HashSet features){
+        int time = 0;
         for (String s : paket.getFeatures()) {
             if (!features.contains(s)) {
-                price += usedPrices.getFeatures().get(s).getPrice();
+                time += usedPrices.getFeatures().get(s).getTime();
             }
             features.add(s);
 
         }
-        return price;
+        return time;
     }
 
-    public int calcPrice(CarOrderStatus CarOStatus, String pack){
-        int price = 0;
+    public int calcTime(CarOrderStatus CarOStatus, String pack){
+        int time = 0;
         HashSet<String> features = new HashSet<>();
 
         for (String COSP : CarOStatus.getPackages()) {
@@ -51,11 +51,11 @@ public class CalculateCost {
         for (String s : CarOStatus.getUsedPricesDB().getPakete().get(pack).getFeatures()) {
             if(!features.contains(s)){
                 features.add(s);
-                price += CarOStatus.getUsedPricesDB().getFeatures().get(s).getPrice();
+                time += CarOStatus.getUsedPricesDB().getFeatures().get(s).getTime();
             }
         }
 
-        return price;
+        return time;
     }
 
 }
