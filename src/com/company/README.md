@@ -1,2 +1,0 @@
-# AutoConfigurator
-## Homework

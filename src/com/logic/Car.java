@@ -1,20 +1,22 @@
-package com.company;
+package com.logic;
+
+import com.IO.DB;
 
 import java.util.HashSet;
 
-public class c_Auto {
+public class Car {
     Plattform plattform;
-    HashSet<String> pakete = new HashSet<>();
+    HashSet<String> packages = new HashSet<>();
 
 
-    public int getPrice(b_DB DB){
+    public int getPrice(DB DB){
 
         int preis = 0;
 
         preis += this.plattform.basePreis;
 
         HashSet<String> features = new HashSet<>();
-        for (String x : this.pakete) {
+        for (String x : this.packages) {
             preis += DB.getPakete().get(x).basePrice;
             for (String s : DB.getPakete().get(x).features) {
                 if (features.contains(s)) {
@@ -29,10 +31,10 @@ public class c_Auto {
         return preis;
     }
 
-    public int getPrice(b_DB DB , String Packet){
+    public int getPrice(DB DB , String Packet){
 
         HashSet<String> features = new HashSet<>();
-        for (String x : this.pakete) {
+        for (String x : this.packages) {
             for (String s : DB.getPakete().get(x).features) {
                 if (features.contains(s)) {
                     continue;
@@ -57,14 +59,14 @@ public class c_Auto {
         return preisPac;
     }
 
-    public int getDauer(b_DB DB){
+    public int getDauer(DB DB){
 
         int dauer = 0;
 
         dauer += this.plattform.deliveryTime;
 
         HashSet<String> features = new HashSet<>();
-        for (String x : this.pakete) {
+        for (String x : this.packages) {
             dauer += DB.getPakete().get(x).deliveryTime;
             for (String s : DB.getPakete().get(x).features) {
                 if (features.contains(s)) {

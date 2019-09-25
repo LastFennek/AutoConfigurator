@@ -1,20 +1,24 @@
 
 
 
-package com.company;
+package com.GUI;
 
-import org.w3c.dom.ls.LSOutput;
+import com.IO.DB;
+import com.logic.Car;
+import com.logic.Plattform;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
-public class a_Main {
+public class Main {
 
     public static void main(String[] args) {//throws everyExeption{
         // write your code here
-        b_DB DB = new b_DB();
-        c_Auto auto = new c_Auto();
+        DB DB = new DB();
+        Car car = new Car();
         Scanner scan = new Scanner(System.in);
 
         int x = 0;
@@ -27,7 +31,7 @@ public class a_Main {
                     for (Map.Entry<String, Plattform> pf : DB.getPlattformen().entrySet()) {
                         System.out.print(counter + ") \t" + pf.getValue().name);
 
-                        if (auto.plattform == pf.getValue()) {
+                        if (car.plattform == pf.getValue()) {
                             System.out.println("*");
                         } else {
                             System.out.println("");
@@ -36,12 +40,12 @@ public class a_Main {
                         ignoreThatShitICantThinkOfABetterSolutionATM.put(counter, pf.getValue().name);
                         counter++;
                     }
-                    if (auto.plattform != null) {
+                    if (car.plattform != null) {
                         System.out.println(counter + ")\t weiter");
                     }
                     int input = scan.nextInt();
                     if (input != counter) {
-                        auto.plattform = DB.getPlattformen().get(ignoreThatShitICantThinkOfABetterSolutionATM.get(input));
+                        car.plattform = DB.getPlattformen().get(ignoreThatShitICantThinkOfABetterSolutionATM.get(input));
                     }
 
                     x = 1;
@@ -54,10 +58,10 @@ public class a_Main {
                     System.out.println("0)\tzurück");
                     System.out.println("");
                     counter = 1;
-                    for (String pf : auto.plattform.pakete) {
-                        System.out.print(counter + ") \t" + pf+ " -> " + auto.getPrice(DB,pf)+"€  ");
+                    for (String pf : car.plattform.pakete) {
+                        System.out.print(counter + ") \t" + pf+ " -> " + car.getPrice(DB,pf)+"€  ");
 
-                        if (auto.pakete.contains(pf)) {
+                        if (car.pakete.contains(pf)) {
                             System.out.println("*");
                         } else {
                             System.out.println("");
@@ -68,7 +72,7 @@ public class a_Main {
                     }
                     System.out.println("");
                     System.out.println(counter + ")\tBestellen");
-                    System.out.println("Momentan: " + auto.getPrice(DB)+"€ -> Lieferdauer(h): " + auto.getDauer(DB));
+                    System.out.println("Momentan: " + car.getPrice(DB)+"€ -> Lieferdauer(h): " + car.getDauer(DB));
                     input = scan.nextInt();
                     if (input == 0) {
                         x = 0;
@@ -77,10 +81,10 @@ public class a_Main {
                         x = -1;
                         break;
                     } else {
-                        if (auto.pakete.contains(ignoreThatShitICantThinkOfABetterSolutionATM.get(input))) {
-                            auto.pakete.remove(ignoreThatShitICantThinkOfABetterSolutionATM.get(input));
+                        if (car.pakete.contains(ignoreThatShitICantThinkOfABetterSolutionATM.get(input))) {
+                            car.pakete.remove(ignoreThatShitICantThinkOfABetterSolutionATM.get(input));
                         } else {
-                            auto.pakete.add(ignoreThatShitICantThinkOfABetterSolutionATM.get(input));
+                            car.pakete.add(ignoreThatShitICantThinkOfABetterSolutionATM.get(input));
                         }
                     }
                     break;
@@ -95,6 +99,6 @@ public class a_Main {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDate localDate = LocalDate.now();
 
-        System.out.println("Dein Auto wird bestellt. Es kostet: " + auto.getPrice(DB) + "€, und wird am " + localDate.plusDays(auto.getDauer(DB) / 8) + " geliefert");
+        System.out.println("Dein Auto wird bestellt. Es kostet: " + car.getPrice(DB) + "€, und wird am " + localDate.plusDays(car.getDauer(DB) / 8) + " geliefert");
     }
 }

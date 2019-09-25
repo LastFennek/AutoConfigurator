@@ -1,20 +1,13 @@
+package com.IO;
 
-
-
-package com.company;
-
-import org.w3c.dom.ls.LSOutput;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class a_Main {
+public class Main {
 
-    public static void main(String[] args) {//throws everyExeption{
-        // write your code here
-        b_DB DB = new b_DB();
-        c_Auto auto = new c_Auto();
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
         int x = 0;

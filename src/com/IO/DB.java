@@ -1,4 +1,8 @@
-package com.company;
+package com.IO;
+
+import com.logic.Feature;
+import com.logic.Paket;
+import com.logic.Plattform;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,10 +12,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class b_DB {
+public class DB {
 
 
-    b_DB(){
+    DB(){
         this.read();
     }
 
