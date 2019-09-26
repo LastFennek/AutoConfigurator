@@ -48,4 +48,8 @@ public class CarOrderStatus {
     DB getUsedPricesDB() {
         return this.usedPricesDB;
     }
+
+    public void resetPackages(){
+        this.packages = new HashSet<>();
+    }
 }

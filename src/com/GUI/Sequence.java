@@ -43,6 +43,11 @@ public class Sequence {
 
                     int in = input.inputInt();
                     if (in != counter) {
+                        if(car.getPlattform() != null){
+                            if(!car.getPlattform().equals(mapNumberToPlattform.get(in))){
+                                car.resetPackages();
+                            }
+                        }
                         car.setPlattform(mapNumberToPlattform.get(in));
                     }
                     x = 1;

@@ -18,18 +18,21 @@ public class UserInput {
 
     public int inputInt(){
         int ret = 0;
-
+        Boolean valid = true;
         do{
+            valid = true;
             try {
                 ret = scan.nextInt();
             }catch (Exception e){
+                valid = false;
+                scan = new Scanner(System.in);
                 System.out.println("Please enter a number!");
             }
 
             if(ret < this.from || ret > this.to){
                 System.out.println("Please enter a number from "+this.from+" to" + this.to);
             }
-        }while (ret < this.from || ret > this.to);
+        }while (ret < this.from || ret > this.to || !valid);
 
         return ret;
     }
